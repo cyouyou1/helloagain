@@ -6,12 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -30,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
         "Twin Peaks", "Freaks and Geeks", "Orphan Black", "Walking Dead",
          "Breaking Bad", "The 400", "Alphas", "Life on Mars"};
 
-        ListAdapter myAdapter = new ArrayAdapter<String>(this, R.layout.row_layout, R.id.textView1, favoriteTVShows);
+        ListAdapter myAdapter = new MyAdapter(this, favoriteTVShows);
 
         ListView myListView = (ListView)findViewById(R.id.mylistView);
         myListView.setAdapter(myAdapter);
@@ -38,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String tvShowPicked = "You selected " + String.valueOf(parent.getItemAtPosition(position));
-                Toast.makeText(MainActivity.this,tvShowPicked,Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,tvShowPicked,Toast.LENGTH_SHORT).show();
             }
         });
 
